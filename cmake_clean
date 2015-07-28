@@ -1,0 +1,6 @@
+#!/bin/sh
+CURR_DIR=`pwd`
+rm -r $CURR_DIR/CMakeFiles
+rm $CURR_DIR/CMakeCache.txt
+rm $CURR_DIR/Makefile
+rm $CURR_DIR/cmake_install.cmake

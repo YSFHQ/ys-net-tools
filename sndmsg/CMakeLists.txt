@@ -4,6 +4,8 @@ cmake_minimum_required(VERSION 2.6)
 project(ys-sndmsg)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BUILD_TYPE})
 
+cmake_policy(SET CMP0015 NEW)
+
 include_directories(include ../../ys_proto/include)
 
 link_directories(lib/${CMAKE_BUILD_TYPE})

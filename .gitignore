@@ -4,22 +4,13 @@
 *.tar.gz
 *.gzip
 
-
-*.log
-
-*.aux
-*.log
-*.out
-*.dvi
-*.nav
-
-*~
-*.bck
-
-.git
-.hg
-*.orig
-.svn
+log.xml
 
 *.exe
 
+CMakeFiles
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+
+lib

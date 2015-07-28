@@ -1,3 +1,4 @@
+#!/bin/sh
 echo " Copy the libs"
 cp ../ys_proto/lib/*.so builds/lib
 cp ../ys_proto/lib/*.dll builds

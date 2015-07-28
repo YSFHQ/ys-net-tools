@@ -1,10 +1,21 @@
-cd ~/Projects/cpp/ys_proto
-~/Projects/cpp/ys-net-tools/make_all
+#!/bin/sh
 
-cd ../ys-net-tools/sndmsg/ 
-~/Projects/cpp/ys-net-tools/make_all
+CURR_DIR=`pwd`
 
-cd ../netlog
-~/Projects/cpp/ys-net-tools/make_all
+cd $CURR_DIR/ys_proto
+$CURR_DIR/make_all
 
-cd ..
+cd $CURR_DIR/checkpoint_check
+$CURR_DIR/make_all
+
+cd $CURR_DIR/sndmsg
+$CURR_DIR/make_all
+
+cd $CURR_DIR/netlog
+$CURR_DIR/make_all
+
+# Commented out because build fails - missing library
+#cd $CURR_DIR/ysrace
+#$CURR_DIR/make_all
+
+cd $CURR_DIR

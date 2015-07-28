@@ -5,7 +5,7 @@
 
 #include <pthread.h>
 
-
+using namespace std;
 
 
 YSclient::YSclient()

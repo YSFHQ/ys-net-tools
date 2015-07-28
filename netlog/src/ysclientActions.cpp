@@ -68,7 +68,7 @@ int YSclient::aweather(tweather* weather)
 {
     printf("Weather:\n");
     printf("day: %d\noptions: %d\nvisib: %f\nwind: %f %f %f\n", weather->day, weather->options, weather->visibility, weather->windX, weather->windY, weather->windZ);
-    xmlLog->log() << "<weather day='" << weather->day << "' visibility='" << weather->visibility << "' windX='" << weather->windX << "' windY=" <<  weather->windY << "' windZ='" <<  weather->windZ << "' />" << endl;
+    xmlLog->log() << "<weather day=\"" << weather->day << "\" visibility=\"" << weather->visibility << "\" windX=\"" << weather->windX << "\" windY=\"" <<  weather->windY << "\" windZ=\"" <<  weather->windZ << "\" />" << endl;
     tacknowledge ack;
     ack.id = 4;
     ack.info = 0;
@@ -108,6 +108,7 @@ int YSclient::amessage(tmessage* message)
 
 int YSclient::aflight(tflight* flight)
 {
+    // this does very strange things - Eric
     //printf("ID: %d x: %f   z: %f   y: %f\n", flight->ID, flight->x, flight->z, flight->y);
 //    float speed = 0.19438612860586*sqrt(flight->xSpeed * flight->xSpeed + flight->ySpeed * flight->ySpeed + flight->zSpeed * flight->zSpeed);
 //    int d = racers[flight->ID]->check(flight->x, flight->z, flight->y, speed, time (NULL));
@@ -141,12 +142,13 @@ int YSclient::aflight(tflight* flight)
 int YSclient::adamage(tdamage* damage)
 {
     printf("DAMAGE: killer: (%d,%d)  victim: (%d,%d) power: %d weapon: %d shot: %d, u1: %d, u2: %d\n", damage->killer, damage->killerID, damage->victim, damage->victimID, damage->power, damage->weapon, damage->shot, damage->u1, damage->u2);
-    xmlLog->log() << "<damage killer_id='" << damage->killer << "' killer_type='" << damage->killerID << "' victim_id='" << damage->victim << "' victim_type='" << damage->victimID << "' power='" << damage->power << "' weapon='" << damage->weapon << "' shot='" << damage->shot << "' />"<<endl;
+    xmlLog->log() << "<damage killer_id=\"" << damage->killer << "\" killer_type=\"" << damage->killerID << "\" victim_id=\"" << damage->victim << "\" victim_type=\"" << damage->victimID << "\" power=\"" << damage->power << "\" weapon=\"" << damage->weapon << "\" shot=\"" << damage->shot << "\" />"<<endl;
     return 1;
 }
 
 int YSclient::auserlist(tuserlist* userlist)
 {
+    printf("PLAYER: action: %d iff: %d id: %d u: %d username: %s", userlist->action, userlist->IFF, userlist->ID, userlist->u, userlist->username);
     return 1;
 }
 
@@ -157,14 +159,14 @@ int YSclient::aground(tground* ground)
     if (ground->type == 65537)
     {
         printf("GROUNDJOIN %s %s type: %d iff: %d id:%d gro_id %d\n", ground->name2, ground->name, ground->type, ground->iff, ground->id, ground->gro_id);
-        xmlLog->log() << "<groundjoin id='"<< ground->id << "' name='" << ground->name << "' name2='" <<  ground->name2 << "' iff='" << ground->iff << "' groID='" << ground->gro_id << "' />" << endl;
+        xmlLog->log() << "<groundjoin id=\""<< ground->id << "\" name=\"" << ground->name << "\" name2=\"" <<  ground->name2 << "\" iff=\"" << ground->iff << "\" groID=\"" << ground->gro_id << "\" />" << endl;
         ack.id = 1;
         //debugHex((char*)&ground, 180);
     }
     else
     {
         printf("PLAYERJOIN %s %s type: %d iff: %d id:%d\n", ground->name2, ground->name, ground->type, ground->iff, ground->id);
-        xmlLog->log() << "<pilotjoin id='"<< ground->id << "' name='" << ground->name << "' name2='" <<  ground->name2 << "' iff='" << ground->iff << "' />" << endl;
+        xmlLog->log() << "<pilotjoin id=\""<< ground->id << "\" name=\"" << ground->name << "\" name2=\"" <<  ground->name2 << "\" iff=\"" << ground->iff << "\" />" << endl;
         ack.id=0;
 //        racers[ground->id] = new Racer(ground->name2, ground->name, 1, cp);
     }
@@ -180,13 +182,13 @@ int YSclient::aleft(tleft* left, int is_ground=0)
     {
         ack.id = 3;
         printf("GROUNDLEFT: %d has left %d.\n", left->id, left->u);
-        xmlLog->log() << "<groundLeft id='"<< left->id <<"' />" << endl;
+        xmlLog->log() << "<groundLeft id=\""<< left->id <<"\" />" << endl;
     }
     else
     {
         ack.id = 2;
         printf("PLAYERLEFT: %d has left %d.\n", left->id, left->u);
-        xmlLog->log() << "<pilotLeft id='"<< left->id <<"' />" << endl;
+        xmlLog->log() << "<pilotLeft id=\""<< left->id <<"\" />" << endl;
 //        racers.erase(left->id);
     }
     ack.info = left->id;

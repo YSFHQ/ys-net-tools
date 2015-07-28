@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 2.6)
 project(netlog)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BUILD_TYPE})
 
+cmake_policy(SET CMP0015 NEW)
 
 find_package (Threads)
 
@@ -39,7 +40,7 @@ endif (FORCE_CPU STREQUAL "32bits")
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
    message("Doing the Windows version!") 
-   include_directories("/usr/i486-mingw32/include")
+   include_directories("/usr/i686-w64-mingw32/include")
    set (LIBS ${LIBS}pthread)
    #target_link_libraries(netlog pthread)
 endif (CMAKE_SYSTEM_NAME STREQUAL "Windows")

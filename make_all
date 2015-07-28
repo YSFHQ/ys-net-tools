@@ -1,7 +1,6 @@
-cmake_clean
-cmake . -G "Unix Makefiles"
-make
+#!/bin/sh
+../cmake_clean
 ./build32bits
 make
-./buildwin32
+./buildwin32 # needs package mingw-w64
 make

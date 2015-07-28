@@ -5,7 +5,6 @@
 #include <math.h>
 
 #include <time.h>
-//#pragma pack(2)
 
 using namespace std;
 
@@ -158,7 +157,7 @@ int YSclient::aflight(tflight* flight, tflight2* flight2)
                 s.sendsYS(packtmessage(mess));
                 cout << racers[flight->ID]->name() << " finished the race in " <<  racers[flight->ID]->time() << "s ; Top speed: "<< racers[flight->ID]->topSpeed() << "kt" << endl;
             }
-            
+
 //            cout << clock() << endl;
         }
     }

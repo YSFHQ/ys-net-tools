@@ -6,6 +6,7 @@
 
 #include "ys_proto/sockets/socketYS.h"
 #include "ys_proto/apps/apps.h"
+#include "ys_proto/types/includeAll.h"
 #include "xmlLog.h"
 //#include "Vec.h"
 //#include "readPoly.h"
